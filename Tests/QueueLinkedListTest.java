@@ -17,5 +17,17 @@ public class QueueLinkedListTest
         assertEquals(alice, queue.dequeue());
         assertTrue(queue.isEmpty());
     }
+
+    @Test //2
+    public void testIsEmpty()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        assertTrue(queue.isEmpty());
+        Student bob = new Student("Bob", 16, 3.4);
+        queue.enqueue(bob);
+        assertFalse(queue.isEmpty());
+        queue.dequeue();
+        assertTrue(queue.isEmpty());
+    }
 }
 
