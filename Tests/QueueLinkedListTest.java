@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.Queue;
-
 import static org.junit.Assert.*;
 
 public class QueueLinkedListTest
@@ -34,20 +32,34 @@ public class QueueLinkedListTest
     }
 
     @Test //3
-    public void testEnqueueMultiple()
+    public void testEnqueueNull()
+    {
+       QueueLinkedList queue = new QueueLinkedList();
+       queue.enqueue(null);
+       assertTrue(queue.isEmpty());
+    }
+
+    @Test (expected = IllegalStateException.class) //4
+    public void testDequeueEmpty()
     {
         QueueLinkedList queue = new QueueLinkedList();
-        Student chase = new Student("Chase", 15, 3.5);
-        Student jordan = new Student("Jordan", 18, 2.5);
-        Student trisha = new Student("Trisha", 13, 4.0);
+        queue.dequeue();
+    }
 
-        queue.enqueue(chase);
-        queue.enqueue(jordan);
-        queue.enqueue(trisha);
+    @Test //5
+    public void testEnqueueDequeueMixed()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        Student zack = new Student("Zack", 13, 3.5);
+        Student vicky = new Student("Vicky", 16, 4.0);
 
-        assertEquals(chase, queue.dequeue());
-        assertEquals(jordan, queue.dequeue());
-        assertEquals(jordan, queue.dequeue());
+        queue.enqueue(zack);
+        assertEquals(zack, queue.dequeue());
+        queue.enqueue(vicky);
+        assertFalse(queue.isEmpty());
+        assertEquals(vicky, queue.dequeue());
         assertTrue(queue.isEmpty());
     }
+
+
 }
