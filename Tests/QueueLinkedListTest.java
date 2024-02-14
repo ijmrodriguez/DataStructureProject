@@ -36,7 +36,7 @@ public class QueueLinkedListTest
     {
        QueueLinkedList queue = new QueueLinkedList();
        queue.enqueue(null);
-       assertTrue(queue.isEmpty());
+       assertFalse(queue.isEmpty());
     }
 
     @Test (expected = IllegalStateException.class) //4

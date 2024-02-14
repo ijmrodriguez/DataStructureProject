@@ -12,16 +12,15 @@ public class QueueLinkedList
     public void enqueue(Student student)
     {
         Node newNode = new Node(student);
-        if(rear == null)
+        if (rear == null)
         {
             front = newNode;
-            rear = newNode;
         }
         else
         {
             rear.setNext(newNode);
-            rear = newNode;
         }
+        rear = newNode;
     }
 
     public Student dequeue()
