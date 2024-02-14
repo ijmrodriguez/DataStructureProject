@@ -61,5 +61,43 @@ public class QueueLinkedListTest
         assertTrue(queue.isEmpty());
     }
 
+    @Test //6
+    public void testEnqueueMultiple()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        Student hannah = new Student("Hannah", 16, 3.6);
+        Student stephanie = new Student("Stephanie", 14, 4.2);
+        Student russel = new Student("Russel", 17, 4.0);
+
+        queue.enqueue(hannah);
+        queue.enqueue(stephanie);
+        queue.enqueue(russel);
+        assertEquals(hannah, queue.dequeue());
+        assertEquals(stephanie, queue.dequeue());
+        assertEquals(russel, queue.dequeue());
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test //7
+    public void testDisplay()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        Student danny = new Student("Danny", 15, 3.2);
+        Student cameron = new Student("Cameron", 16, 4.3);
+
+        queue.enqueue(danny);
+        queue.enqueue(cameron);
+        queue.display();
+        assertFalse(queue.isEmpty());
+    }
+
+    @Test //8
+    public void testDisplayEmptyQueue()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        queue.display();
+        assertTrue(queue.isEmpty());
+    }
+
 
 }
