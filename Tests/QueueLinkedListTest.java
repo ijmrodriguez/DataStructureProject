@@ -99,5 +99,37 @@ public class QueueLinkedListTest
         assertTrue(queue.isEmpty());
     }
 
+    @Test (timeout = 1000) //9
+    public void testPerformance()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        for(int i = 0; i < 1000000; i++)
+        {
+            queue.enqueue(new Student("Student" + i, 20 + i, 3.0 + (i* 0.1)));
+        }
+        assertFalse(queue.isEmpty());
+        for(int i = 0; i < 1000000; i++)
+        {
+            assertNotNull(queue.dequeue());
+        }
+        assertTrue(queue.isEmpty());
+    }
 
+    @Test //10
+    public void testQueueState()
+    {
+        QueueLinkedList queue = new QueueLinkedList();
+        Student henry = new Student("Henry", 15, 3.8);
+        Student joaquin = new Student("Joaquin", 14, 4.2);
+        Student ben = new Student("Ben", 13, 3.3);
+
+        queue.enqueue(henry);
+        assertFalse(queue.isEmpty());
+        queue.enqueue(joaquin);
+        queue.enqueue(ben);
+        assertEquals(henry, queue.dequeue());
+        assertEquals(joaquin, queue.dequeue());
+        assertEquals(ben, queue.dequeue());
+        assertTrue(queue.isEmpty());
+    }
 }
