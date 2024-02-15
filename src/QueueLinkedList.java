@@ -12,6 +12,7 @@ public class QueueLinkedList
     public void enqueue(Student student)
     {
         Node newNode = new Node(student);
+        newNode.setData(student);
         if (rear == null)
         {
             front = newNode;
